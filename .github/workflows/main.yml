@@ -10,20 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Run a simple script
       - name: Run a simple script
         run: echo "Hello, GitHub Actions!"
 
-      # Step 3: (Fixed) Safe test step — will not fail even if no tests exist
       - name: Run tests
         run: |
           echo "Running tests..."
-          python -m unittest discover || echo "No tests found — skipping."
+          python -m unittest discover || echo "No tests found - skipping."
 
-      # Step 4: Use a secret (you’ll add it in Settings)
       - name: Use secret
         run: echo "Using secret: ${{ secrets.MY_SECRET }}"
